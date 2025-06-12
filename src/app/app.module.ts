@@ -29,7 +29,7 @@ import { AddRecipeComponent } from './pages/add-recipe/add-recipe.component';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    AddRecipeComponent
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
