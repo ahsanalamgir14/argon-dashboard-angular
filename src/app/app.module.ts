@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { AddRecipeComponent } from './pages/add-recipe/add-recipe.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ComponentsModule } from './components/components.module';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    AddRecipeComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
