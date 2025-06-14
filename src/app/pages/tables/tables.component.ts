@@ -7,10 +7,7 @@ import { RecipeService, Recipe } from './recipe.service';
   styleUrls: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit {
-@Component({
-  selector: 'app-recipe',
-  templateUrl: './recipe.component.html'
-})
+
   recipes: Recipe[] = [];
   //   recipes = [
   //   {
@@ -56,6 +53,11 @@ export class TablesComponent implements OnInit {
       console.log('res', this.recipes);
     });
   }
+  onDelete(recipe: Recipe) {
+    this.recipeService.deleteRecipe(recipe.id).subscribe(() => {
+      this.recipes = this.recipes.filter(r => r.id !== recipe.id);
+    });
 
   }
 
+}
