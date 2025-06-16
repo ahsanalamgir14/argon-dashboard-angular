@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService, Recipe } from './recipe.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
@@ -44,7 +44,7 @@ export class TablesComponent implements OnInit {
   //   }
   // ]
  
-  constructor(private recipeService: RecipeService) {}
+  constructor(private recipeService: RecipeService, private router: Router) {}
 
 
   ngOnInit() {
@@ -57,7 +57,12 @@ export class TablesComponent implements OnInit {
     this.recipeService.deleteRecipe(recipe.id).subscribe(() => {
       this.recipes = this.recipes.filter(r => r.id !== recipe.id);
     });
+  
 
+  }
+  
+  onEdit(recipe: Recipe) {
+this.router.navigate(['/recipe/edit', recipe.id]);
   }
 
 }

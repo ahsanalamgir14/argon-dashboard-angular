@@ -13,6 +13,7 @@
   <div class="col">
     <div class="card shadow">
       <div class="card-header border-0">
+        
         <h3 class="mb-0"> Recipe table</h3>
       </div>
       <div class="table-responsive">
@@ -39,18 +40,15 @@
 
                 </div>
               </th>
-              <td>
+              <td  style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+  {{ recipe.ingredients }}
+</td>>
                 {{recipe.price}}
-              </td>
+              
               <td>
                 <p>image</p>
               </td>
-
-
-
-              <td>
-              </td>
-              <td>
+              <td class="m-width">
                 {{recipe.ingredients}}
               </td>
               <td class="text-right">
@@ -59,9 +57,9 @@
                     <i class="fas fa-ellipsis-v"></i>
                   </a>
                   <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                    <a class="dropdown-item" href="javascript:void(0)" (click)="onDelete(recipe.id)">Delete</a>
-                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="onDelete(recipe)">Delete</a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="onEdit(recipe)">Edit</a>
+             
                   </div>
                 </div>
               </td>

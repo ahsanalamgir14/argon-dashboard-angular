@@ -13,6 +13,7 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddRecipeComponent } from 'src/app/pages/add-recipe/add-recipe.component';
+import { EditRecipeComponent } from 'src/app/pages/edit-recipe/edit-recipe.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AddRecipeComponent } from 'src/app/pages/add-recipe/add-recipe.componen
     TablesComponent,
     IconsComponent,
     MapsComponent,
-    AddRecipeComponent
+    AddRecipeComponent, 
+    EditRecipeComponent
   ],
   exports: [
     FormsModule
