@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-recipe',
@@ -16,6 +17,8 @@ export class EditRecipeComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
+        private toastr: ToastrService
+    
   ) {}
 
 ngOnInit(): void {
@@ -51,6 +54,7 @@ ngOnInit(): void {
         .subscribe(response => {
           console.log('Recipe updated successfully:', response);
           this.router.navigate(['/recipes']);
+          this.toastr.success("success", "update successfully")
           // Navigate or show a success message if needed
         }, error => {
           console.error('Failed to update recipe:', error);

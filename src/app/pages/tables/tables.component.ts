@@ -2,13 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { RecipeService, Recipe } from "./recipe.service";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { ifError } from "assert";
 @Component({
   selector: "app-tables",
   templateUrl: "./tables.component.html",
   styleUrls: ["./tables.component.scss"],
 })
 export class TablesComponent implements OnInit {
-
   recipes: Recipe[] = [];
   //   recipes = [
   //   {
@@ -52,8 +52,6 @@ export class TablesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-          this.toastr.success("success", "deleted successfully");
-
     this.recipeService.getRecipes().subscribe((data) => {
       this.recipes = data;
       console.log("res", this.recipes);
@@ -68,6 +66,5 @@ export class TablesComponent implements OnInit {
 
   onEdit(recipe: Recipe) {
     this.router.navigate(["/recipe/edit", recipe.id]);
-    this.toastr.error("success", "Something went wrong.");
   }
 }
