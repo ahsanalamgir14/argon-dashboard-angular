@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { RecipeService, Recipe } from './recipe.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { RecipeService, Recipe } from "./recipe.service";
+import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 @Component({
-  selector: 'app-tables',
-  templateUrl: './tables.component.html',
-  styleUrls: ['./tables.component.scss']
+  selector: "app-tables",
+  templateUrl: "./tables.component.html",
+  styleUrls: ["./tables.component.scss"],
 })
 export class TablesComponent implements OnInit {
 
@@ -43,26 +44,30 @@ export class TablesComponent implements OnInit {
   //     "instructions": "Mash avocados. Add chopped onion, tomato, and lime juice. Season with salt. Mix and serve fresh."
   //   }
   // ]
- 
-  constructor(private recipeService: RecipeService, private router: Router) {}
 
+  constructor(
+    private recipeService: RecipeService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
-    this.recipeService.getRecipes().subscribe(data => {
+          this.toastr.success("success", "deleted successfully");
+
+    this.recipeService.getRecipes().subscribe((data) => {
       this.recipes = data;
-      console.log('res', this.recipes);
+      console.log("res", this.recipes);
     });
   }
   onDelete(recipe: Recipe) {
     this.recipeService.deleteRecipe(recipe.id).subscribe(() => {
-      this.recipes = this.recipes.filter(r => r.id !== recipe.id);
+      this.recipes = this.recipes.filter((r) => r.id !== recipe.id);
+      this.toastr.success("success", "deleted successfully");
     });
-  
-
   }
-  
+
   onEdit(recipe: Recipe) {
-this.router.navigate(['/recipe/edit', recipe.id]);
+    this.router.navigate(["/recipe/edit", recipe.id]);
+    this.toastr.error("success", "Something went wrong.");
   }
-
 }

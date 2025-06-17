@@ -1,4 +1,4 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AddRecipeComponent } from './pages/add-recipe/add-recipe.component';
 import { EditRecipeComponent } from './pages/edit-recipe/edit-recipe.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { EditRecipeComponent } from './pages/edit-recipe/edit-recipe.component';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   declarations: [
     AppComponent,
@@ -32,7 +35,10 @@ import { EditRecipeComponent } from './pages/edit-recipe/edit-recipe.component';
     AuthLayoutComponent,
     
   ],
-  providers: [],
+  providers: [
+    provideAnimations(), // required animations providers
+    // provideToastr(), // Toastr providers
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
